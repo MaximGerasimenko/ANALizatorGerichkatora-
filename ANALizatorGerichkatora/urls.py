@@ -11,5 +11,5 @@ urlpatterns = [
     path('', views.main_redirect_view),
     path('home/', views.main_view, name="home"),
 
-    path('API/', include('applications.API.urls', namespace="API")),
+    path('api/', include('applications.API.urls', namespace="api")),
 ]
