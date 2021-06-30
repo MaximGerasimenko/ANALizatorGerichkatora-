@@ -1,9 +1,16 @@
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'assets'),
+]
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
@@ -13,7 +20,7 @@ SECRET_KEY = 'django-insecure-_u$6r0+t3n%2#htx+&fht+a0!^%@93elrt71jpq7+ot4hdexxw
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['lux3rush.pythonanywhere.com']
+ALLOWED_HOSTS = ['lux3rush.pythonanywhere.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -25,6 +32,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'applications.API'
 ]
 
 MIDDLEWARE = [
@@ -42,8 +51,10 @@ ROOT_URLCONF = 'ANALizatorGerichkatora.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': [os.path.join(BASE_DIR, 'applications'),
+                 os.path.join(BASE_DIR, 'templates'),
+                 os.path.join(BASE_DIR, 'templatetags'),
+                 os.path.join(BASE_DIR, 'assets')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -51,6 +62,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },
@@ -103,11 +115,6 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.2/howto/static-files/
-
-STATIC_URL = '/static/'
-STATIC_ROOT = '/home/lux3rush/ANALizatorGerichkatora-/static'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
