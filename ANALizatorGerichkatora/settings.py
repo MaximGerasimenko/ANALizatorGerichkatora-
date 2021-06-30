@@ -13,7 +13,7 @@ SECRET_KEY = 'django-insecure-_u$6r0+t3n%2#htx+&fht+a0!^%@93elrt71jpq7+ot4hdexxw
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['lux3rush.pythonanywhere.com']
 
 
 # Application definition
@@ -107,6 +107,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = '/home/lux3rush/ANALizatorGerichkatora-/static'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
